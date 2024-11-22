@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vlv="clr-namespace:Microsoft.Maui.Controls;assembly=VirtualListView"
+    x:Class="VirtualListEmptyViewOverlap.MainPage">
+
+    <Grid>
+
+        <vlv:VirtualListView
+            x:Name="virtualListView">
+
+            <vlv:VirtualListView.GlobalHeader>
+
+                <VerticalStackLayout
+                    BackgroundColor="LightGreen"
+                    Spacing="10"
+                    Padding="20">
+
+                    <Label
+                        Text="Header"
+                        FontSize="Title" />
+
+                    <Label
+                        Text="This is the global header content."
+                        FontSize="Body" />
+
+                </VerticalStackLayout>
+
+            </vlv:VirtualListView.GlobalHeader>
+
+            <vlv:VirtualListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <VerticalStackLayout
+                        BackgroundColor="LightYellow"
+                        Padding="20,10">
+
+                        <Label
+                            Text="{Binding}" />
+
+                    </VerticalStackLayout>
+
+                </DataTemplate>
+
+            </vlv:VirtualListView.ItemTemplate>
+
+            <vlv:VirtualListView.EmptyView>
+
+                <Grid>
+
+                    <VerticalStackLayout
+                        BackgroundColor="Salmon"
+                        Opacity="0.5"/>
+
+                    <Label
+                        Text="You have no content."
+                        HorizontalOptions="Center"
+                        FontSize="Title"
+                        Margin="20" />
+
+                </Grid>
+
+            </vlv:VirtualListView.EmptyView>
+
+            <vlv:VirtualListView.GlobalFooter>
+
+                <VerticalStackLayout
+                    BackgroundColor="LightBlue"
+                    Spacing="10"
+                    Padding="20">
+
+                    <Label
+                        Text="Footer"
+                        FontSize="Title" />
+
+                    <Label
+                        Text="This is the global footer content."
+                        FontSize="Body" />
+
+                </VerticalStackLayout>
+
+            </vlv:VirtualListView.GlobalFooter>
+
+        </vlv:VirtualListView>
+
+        <VerticalStackLayout
+            VerticalOptions="End"
+            Spacing="10"
+            Padding="20">
+
+            <Button
+                Text="Add Content"
+                Clicked="AddContent" />
+
+            <Button
+                Text="Clear Content"
+                Clicked="ClearContent" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>
