@@ -57,6 +57,20 @@ System.InvalidOperationException: This window is already associated with an acti
 
 **Next steps:** Try getting this fix working in our actual app which is on .NET 8 and has many references to MainPage.
 
+**Update**
+
+A limitation of this fix has been found on Android tablets when running in landscape resulting in multiple instances of the app opening.
+
+Repro steps:
+1. Use a tablet device in landscape orientation.
+2. Open the repro app via the app icon; not deep linking.
+3. Background the repro app.
+4. Open the repro app via the deep link.
+5. The repro app opens in a split multi window view.
+6. If the app switcher is opened, two instances of the app can be seen.
+
+From initial observations we see that OnCreate is being called multiple times when the deep link opens in a split multi window view.
+
 ---
 
 #### Additional information
@@ -79,6 +93,11 @@ This is how the repro apps are set up by default.
 
 #### 1.1.1 MainActivity.cs
 ```csharp
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.OS;
+
 ...
 
 [Activity(
@@ -170,6 +189,11 @@ Change LaunchMode to SingleTask in AndroidManifest.xml
 
 #### 3.1.1 MainActivity.cs
 ```csharp
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.OS;
+
 ...
 
 [Activity(
@@ -204,6 +228,11 @@ public class MainActivity : MauiAppCompatActivity
 Create the below activity.
 
 ```csharp
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.OS;
+
 ...
 
 [Activity(
@@ -220,7 +249,7 @@ public class DeepLinkingActivity : Activity
     {
         base.OnCreate(savedInstanceState);
         this.ForwardIntent();
-    }
+    }r
 
     protected override void OnNewIntent(Intent? intent)
     {
@@ -284,6 +313,10 @@ Create the below activity.
 
 ```kotlin
 ...
+
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
 
 class DeepLinkingActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
