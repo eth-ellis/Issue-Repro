@@ -7,3 +7,13 @@ obj/
 
 # JetBrains
 .idea
+
+# Mac
+.DS_Store
+
+# Gradle Files
+.gradle/
+build/
+
+# Android Local Configuration
+local.properties
