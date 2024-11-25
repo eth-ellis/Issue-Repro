@@ -22,6 +22,6 @@ CollectionViewPerformanceXamarin
 
 DeepLinkingAndroid
 
-For more information see the [DeepLinkingAndroid README]()
+For more information see the [DeepLinkingAndroid README](https://github.com/eth-ellis/Issue-Repro/tree/main/DeepLinkingAndroid)
 
 ---
