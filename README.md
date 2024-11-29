@@ -25,3 +25,9 @@ DeepLinkingAndroid
 For more information see the [DeepLinkingAndroid README](https://github.com/eth-ellis/Issue-Repro/tree/main/DeepLinkingAndroid)
 
 ---
+
+OnNavigatedFromAfterSwipe
+
+[iOS - OnNavigatedFrom is not fired when navigating back by swiping](https://github.com/dotnet/maui/issues/26216)
+
+---
