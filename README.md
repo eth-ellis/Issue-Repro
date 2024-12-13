@@ -31,3 +31,7 @@ OnNavigatedFromAfterSwipe
 [iOS - OnNavigatedFrom is not fired when navigating back by swiping](https://github.com/dotnet/maui/issues/26216)
 
 ---
+
+ActionSheetOrientationChange
+
+[iPad - ActionSheet does not stay in the centre of the screen on orientation change](https://github.com/dotnet/maui/issues/26560)
